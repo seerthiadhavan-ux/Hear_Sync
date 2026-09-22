@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "author": "HearSync Team",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd",
+      "top": -90,
+      "left": 120,
+      "attrs": {
+        "pins": "i2c"
+      }
+    },
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 130,
+      "left": 180,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledLeft",
+      "top": 390,
+      "left": 80,
+      "attrs": {
+        "color": "blue",
+        "label": "LEFT (18)"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledCenter",
+      "top": 390,
+      "left": 190,
+      "attrs": {
+        "color": "yellow",
+        "label": "CENTER (19)"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledRight",
+      "top": 390,
+      "left": 300,
+      "attrs": {
+        "color": "red",
+        "label": "RIGHT (23)"
+      }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "dirKnob",
+      "top": 480,
+      "left": 170,
+      "attrs": {
+        "label": "DIRECTION (L/N/R)",
+        "value": "1000"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "soundBtn",
+      "top": 490,
+      "left": 310,
+      "attrs": {
+        "color": "red",
+        "label": "SIREN TRIGGER"
+      }
+    }
+  ],
+  "connections": [
+    [ "lcd:GND", "esp:GND.1", "black", [ "h-20", "v120" ] ],
+    [ "lcd:VCC", "esp:3V3", "red", [ "h-10", "v140" ] ],
+    [ "lcd:SDA", "esp:21", "blue", [ "h15", "v120" ] ],
+    [ "lcd:SCL", "esp:22", "yellow", [ "h25", "v110" ] ],
+
+    [ "ledLeft:A", "esp:18", "blue", [ "v-30", "h60" ] ],
+    [ "ledLeft:C", "esp:GND.1", "black", [ "v30", "h-20" ] ],
+
+    [ "ledCenter:A", "esp:19", "gold", [ "v-30", "h-20" ] ],
+    [ "ledCenter:C", "esp:GND.1", "black", [ "v30", "h-120" ] ],
+
+    [ "ledRight:A", "esp:23", "red", [ "v-30", "h-60" ] ],
+    [ "ledRight:C", "esp:GND.1", "black", [ "v30", "h-220" ] ],
+
+    [ "dirKnob:GND", "esp:GND.1", "black", [ "v-20", "h-80" ] ],
+    [ "dirKnob:VCC", "esp:3V3", "red", [ "v-20", "h-60" ] ],
+    [ "dirKnob:SIG", "esp:34", "green", [ "v-20", "h100" ] ],
+
+    [ "soundBtn:1.l", "esp:14", "red", [ "v-20", "h-40" ] ],
+    [ "soundBtn:2.l", "esp:GND.1", "black", [ "v20", "h-120" ] ]
+  ],
+  "dependencies": {}
+}
